@@ -1,0 +1,154 @@
+{% load static %}
+
+
+{% if user.is_authenticated %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+       
+    
+        .navbar {
+        background-color: #cfac5f;
+    }
+    .navbar-brand, .nav-link {
+        color: white !important;
+    }
+    .sidebar {
+        height: 100vh;
+        background-color: #343a40;
+        padding: 15px;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        z-index: 1000;
+    }
+    .sidebar a {
+        color: #adb5bd;
+        text-decoration: none;
+        display: block;
+        padding: 10px 0;
+    }
+    .sidebar a:hover {
+        background-color: #495057;
+        color: white;
+    }
+    .content {
+        margin-left: 240px;
+        padding: 20px;
+    }
+    .btn-primary {
+        background-color: #cfac5f;
+        border-color: #cfac5f;
+    }
+    .btn-primary:hover {
+        background-color: #b89d53;
+        border-color: #b89d53;
+    }
+
+    @media (max-width: 992px) {
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            margin-left: 0;
+        }
+        .content {
+            margin-left: 0;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Student Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1>Welcome to the Student Dashboard</h1>
+        <p>Hello, {{ user.username }}!</p>
+        <!-- Add your dashboard content here -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Courses
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">View your enrolled courses.</p>
+                        <a href="#" class="btn btn-primary">Go to Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Assignments
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Check your assignments and submissions.</p>
+                        <a href="#" class="btn btn-primary">View Assignments</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Grades
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Review your grades.</p>
+                        <a href="#" class="btn btn-primary">See Grades</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Profile
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Update your personal information.</p>
+                        <a href="#" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></body>
+</html>
+{% else %}
+
+{% include 'login.html' %}
+
+{% endif %}
+
+
+

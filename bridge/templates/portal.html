@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static }
+
+{% block content %}
+</br>
+</br>
+</br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Selection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+       
+       
+        .card {
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-icon {
+            font-size: 50px;
+            color: #cfac5f;
+            margin-bottom: 15px;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #cfac5f;
+            border-color: #cfac5f;
+        }
+        .btn-primary:hover {
+            background-color: #b89d53;
+            border-color: #b89d53;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Student Portal Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-user-graduate card-icon"></i>
+                        <h5 class="card-title">Student Portal</h5>
+                        <p class="card-text">Access the student dashboard and manage your courses, assignments, and grades.</p>
+                        <a href="{% url 'login' %}" class="btn btn-primary">Go to Student Portal</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Lecturer Portal Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-chalkboard-teacher card-icon"></i>
+                        <h5 class="card-title">Faculty Portal</h5>
+                        <p class="card-text">Access the lecturer dashboard to manage courses, assignments, and students.</p>
+                        <a href="#" class="btn btn-primary">Go to Lecturer Portal</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Admin Portal Card -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-user-shield card-icon"></i>
+                        <h5 class="card-title">Admin Portal</h5>
+                        <p class="card-text">Access the admin dashboard to manage users, courses, and the system settings.</p>
+                        <a href="#" class="btn btn-primary">Go to Admin Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+{% endblock %}
+
