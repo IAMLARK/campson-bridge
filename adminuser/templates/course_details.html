@@ -1,0 +1,27 @@
+
+<div class="card">
+   
+    <div class="card-body">
+        <p class="card-text">
+            <strong>Course: </strong>{{ course_details.name }}<br/>
+          </p>
+      <p class="card-text">
+        <strong>Description: </strong>{{ course_details.description }}<br/>
+      </p>
+      
+      <p class="card-text"></p>
+        <strong>lecturer: </strong>{{ course_details.lecturer }}<br/>
+    </p>
+    <!-- <p class="card-text"></p>
+        <strong>Students: </strong>{{ course_details.students }}<br/>
+    </p> -->
+   
+      
+    </div>
+  </div>
+<br/>
+
+<a href="{% url 'course_management' %} " class="btn btn-secondary">Back</a>
+
+<a href="{% url 'update_course' course_details.id %} " class="btn btn-secondary">Update Record</a>
+<a href="{% url 'delete_course' course_details.id %} " class="btn btn-danger">Delete</a>

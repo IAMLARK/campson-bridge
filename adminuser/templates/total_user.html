@@ -1,0 +1,33 @@
+<div class="row">
+    <!-- Total Users Card -->
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; height: 100%;">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #007bff; font-weight: bold;">Total Users</h5>
+                <p class="card-text" style="font-size: 1.25rem; margin-bottom: 1rem;">
+                    Current users: <span style="font-weight: 600;">{{ total_users }}</span>
+                </p>
+                <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                    {% for user in all_users %}
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                        {{ user.get_full_name }} 
+                        <small style="color: #6c757d;">({{ user.username }})</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Users Card -->
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border: none; height: 100%;">
+            <div class="card-body">
+                <h5 class="card-title" style="color: #28a745; font-weight: bold;">Active Users</h5>
+                <p class="card-text" style="font-size: 1.25rem;">
+                    Active users: <span style="font-weight: 600;">{{ active_users }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

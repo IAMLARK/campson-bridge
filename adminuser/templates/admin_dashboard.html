@@ -1,13 +1,10 @@
 {% load static %}
-
- {% if user.is_authenticated %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -33,7 +30,7 @@
             font-size: 16px;
         }
         .sidebar a:hover {
-            background-color: #343a40;
+            background-color: #495057;
         }
         .sidebar a.active {
             background-color: gray;
@@ -50,9 +47,7 @@
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
-        .card-text {
-            font-size: 0.95rem;
-        }
+        
         .btn-custom {
             border-radius: 20px;
             width: 100%;
@@ -68,7 +63,7 @@
             color: #343a40;
         }
         .dashboard-header .btn-notifications {
-            background-color: #dc3545;
+            background-color: brown;
             color: white;
             padding: 10px 15px;
             border-radius: 50%;
@@ -95,7 +90,6 @@
         background-color: #b5934d; /* A slightly darker shade for hover effect */
         color: white;
     }
-        
     </style>
 </head>
 <body>
@@ -103,26 +97,22 @@
         <div class="row">
             <!-- Sidebar -->
             <nav class="sidebar col-md-3 col-lg-2 d-md-block">
-                <h2>Student Dashboard</h2>
-                <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
-                <a href="#"><i class="fas fa-book"></i> My Courses</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Schedule</a>
-                <a href="#"><i class="fas fa-tasks"></i> Assignments</a>
-                <a href="#"><i class="fas fa-file-alt"></i> Exams</a>
-                <a href="#"><i class="fas fa-chart-line"></i> Grades</a>
-                <a href="#"><i class="fas fa-comments"></i> Messages</a>
-                <a href="#"><i class="fas fa-user"></i> Profile</a>
-                <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                <a href="{% url 'logout' %}"><i class="fas fa-cog"></i>Logout</a>
+                <h2>Admin Dashboard</h2>
+                <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-users"></i> User Management</a>
+                <a href="#"><i class="fas fa-book"></i> Course Management</a>
+                <a href="#"><i class="fas fa-file-alt"></i> Reports</a>
+                <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+                <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
 
             <!-- Main content -->
             <main class="main-content col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="dashboard-header">
-                    <h1>Welcome, {{ user.username }}</h1>
+                    <h1>Welcome, Admin</h1>
                     <button class="btn btn-notifications">
                         <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
+                        <span class="badge">5</span>
                     </button>
                 </div>
 
@@ -131,88 +121,79 @@
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Current Courses</h5>
-                                <p class="card-text">You are enrolled in 5 courses</p>
-                                <a href="{% url 'courses' %}" class="btn btn-primary btn-custom">View Courses</a>
+                                <h5 class="card-title text-primary">Total Users</h5>
+                                <p class="card-text">Current users: 1500</p>
+                                <a href="{% url 'total_user' %}" class="btn  btn-custom">View Users</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title text-success">Upcoming Assignments</h5>
-                                <p class="card-text">2 assignments due this week</p>
-                                <a href="#" class="btn btn-success btn-custom">Manage Assignments</a>
+                                <h5 class="card-title text-success">Active Courses</h5>
+                                <p class="card-text">Currently active: 30</p>
+                                <a href="#" class="btn btn-success btn-custom">Manage Courses</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title text-warning">Exams</h5>
-                                <p class="card-text">Next exam: Math 101</p>
-                                <a href="#" class="btn btn-warning btn-custom">Exam Schedule</a>
+                                <h5 class="card-title text-warning">Pending Reports</h5>
+                                <p class="card-text">5 reports awaiting review</p>
+                                <a href="#" class="btn btn-warning btn-custom">View Reports</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title text-danger">Messages</h5>
-                                <p class="card-text">You have 3 new messages</p>
-                                <a href="#" class="btn btn-danger btn-custom">Check Messages</a>
+                                <h5 class="card-title text-danger">System Alerts</h5>
+                                <p class="card-text">Check the latest system alerts</p>
+                                <a href="#" class="btn btn-danger btn-custom">View Alerts</a>
                             </div>
+                        </div>
+                    </div>
+                <!-- User Management Section -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">User Management</h5>
+                                <p class="card-text">Manage system users and their roles</p>
+                                <a href="#" class="btn btn-primary btn-custom">Manage Users</a>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Course Management Section -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Course Management</h5>
+                            <p class="card-text">Add, update, or remove courses</p>
+                            <a href="{% url 'course_management' %}" class="btn btn-success btn-custom">Manage Courses</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Course Progress -->
-                <div class="row">
-                    <div class="col-md-12 mb-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Course Progress</h5>
-                                <p class="card-text">Track your progress across all courses</p>
-                                <!-- Example Progress Bars -->
-                                <div class="mb-3">
-                                    <h6>Math 101</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;">70%</div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <h6>History 201</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;">50%</div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <h6>Science 301</h6>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 80%;">80%</div>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-primary btn-custom">View All Progress</a>
-                            </div>
+                <!-- Reports Section -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Reports</h5>
+                            <p class="card-text">Generate and view various reports</p>
+                            <a href="#" class="btn btn-warning btn-custom">View Reports</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Notifications Section -->
-                <div class="row">
-                    <div class="col-md-12 mb-4">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Notifications</h5>
-                                <p class="card-text">Stay updated with the latest alerts</p>
-                                <ul class="list-group">
-                                    <li class="list-group-item">Assignment 1 due in 2 days</li>
-                                    <li class="list-group-item">Math 101 exam next week</li>
-                                    <li class="list-group-item">Group project meeting tomorrow</li>
-                                </ul>
-                            </div>
+                <!-- Settings Section -->
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Settings</h5>
+                            <p class="card-text">Adjust system settings and preferences</p>
+                            <a href="#" class="btn btn-secondary btn-custom">System Settings</a>
                         </div>
                     </div>
+                </div>
                 </div>
             </main>
         </div>
@@ -221,13 +202,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    {% else %}
-
-    {% include 'login.html' %}
-    
-    {% endif %}
-    
-
 </body>
-
 </html>

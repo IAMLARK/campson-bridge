@@ -1,10 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
+from adminuser.models import Course
+
 
 # Create your views here.
 def student_dashboard(request):
-    return render(request, "student_dashboard.html", {})
+        return render(request, "student_dashboard.html", {})
+
+def courses(request):
+    courses = Course.objects.all()    
+    return render(request, "courses.html", {'courses':courses})
+
 
 
 def login_user(request):
